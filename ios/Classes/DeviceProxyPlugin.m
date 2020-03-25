@@ -17,15 +17,38 @@
 }
 - (NSString *)getProxyUrl{
     NSDictionary *proxySettings = (__bridge NSDictionary *)CFNetworkCopySystemProxySettings();
-    NSArray *proxies = (__bridge NSArray *)CFNetworkCopyProxiesForURL((__bridge CFURLRef)[NSURL URLWithString:@"http://www.baidu.com"], (__bridge CFDictionaryRef)proxySettings);
-    NSDictionary *settings = [proxies objectAtIndex:0];
-    NSString * hostName = [settings objectForKey:(NSString *)kCFProxyHostNameKey];
-    NSString * protNumber = [settings objectForKey:(NSString *)kCFProxyPortNumberKey];
-    NSString * proxyType = [settings objectForKey:(NSString *)kCFProxyTypeKey];
-    NSLog(@"host=%@", hostName);
-    NSLog(@"port=%@", protNumber);
-    NSLog(@"type=%@", proxyType);
-    return [NSString stringWithFormat:@"%@:%@", hostName?hostName:@"", protNumber?protNumber:@""];
+    if ([proxySettings isKindOfClass:[NSDictionary class]]) {
+        NSArray *proxies = (__bridge NSArray *)CFNetworkCopyProxiesForURL((__bridge CFURLRef)[NSURL URLWithString:@"http://www.baidu.com"], (__bridge CFDictionaryRef)proxySettings);
+        if (proxies != nil && [proxies isKindOfClass:[NSArray class]]) {
+            NSDictionary *settings = [proxies objectAtIndex:0];
+            if (settings != nil && [settings isKindOfClass:[NSDictionary class]]) {
+                NSString * hostName = [settings objectForKey:(NSString *)kCFProxyHostNameKey];
+                NSString * protNumber = [settings objectForKey:(NSString *)kCFProxyPortNumberKey];
+                NSString * proxyType = [settings objectForKey:(NSString *)kCFProxyTypeKey];
+                if (hostName && protNumber && hostName.length>0 && protNumber.length>0) {
+                    NSLog(@"host=%@", hostName);
+                    NSLog(@"port=%@", protNumber);
+                    NSLog(@"type=%@", proxyType);
+                    return [NSString stringWithFormat:@"%@:%@", hostName?hostName:@"", protNumber?protNumber:@""];
+                }
+                else{
+                    return nil;
+                }
+            }
+            else{
+                return nil;
+            }
+            
+        }
+        else{
+            return nil;
+        }
+        
+    }
+    else{
+        return nil;
+    }
+    
 
 }
 @end
