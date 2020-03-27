@@ -25,7 +25,7 @@
                 NSString * hostName = [settings objectForKey:(NSString *)kCFProxyHostNameKey];
                 NSString * protNumber = [settings objectForKey:(NSString *)kCFProxyPortNumberKey];
                 NSString * proxyType = [settings objectForKey:(NSString *)kCFProxyTypeKey];
-                if (hostName && protNumber && hostName.length>0 && protNumber.length>0) {
+                if (hostName && protNumber && hostName.length) {
                     NSLog(@"host=%@", hostName);
                     NSLog(@"port=%@", protNumber);
                     NSLog(@"type=%@", proxyType);

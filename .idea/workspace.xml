@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="f4639189-9832-41c4-8dea-c12c2197af69" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Classes/DeviceProxyPlugin.m" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Classes/DeviceProxyPlugin.m" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
