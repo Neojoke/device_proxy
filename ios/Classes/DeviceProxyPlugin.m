@@ -32,21 +32,21 @@
                     return [NSString stringWithFormat:@"%@:%@", hostName?hostName:@"", protNumber?protNumber:@""];
                 }
                 else{
-                    return nil;
+                    return @"";
                 }
             }
             else{
-                return nil;
+                return @"";
             }
             
         }
         else{
-            return nil;
+            return @"";
         }
         
     }
     else{
-        return nil;
+        return @"";
     }
     
 
